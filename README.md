@@ -34,20 +34,29 @@ Can be extended to connect with MySQL, PostgreSQL, or other databases.
 ⚙️ Tech Stack
 
 Frontend: Streamlit
+
 Backend: Python
+
 LLM Model: Transformer-based models (e.g., Gemini, GPT, or similar LLMs)
+
 Database: SQLite
+
 Libraries: Transformers, LangChain, SQLAlchemy, Pandas
 
 🚀 Features
 
 ✅ Converts natural language queries into SQL commands
+
 ✅ Executes and displays query results directly in the interface
+
 ✅ Detects and classifies malicious or risky text content
+
 ✅ Interactive and user-friendly web UI
+
 ✅ Modular structure for easy scalability and customization
 
 🛠️ Environment Setup
+
 🧩 Prerequisites
 
 Ensure you have:
@@ -59,11 +68,13 @@ pip (Python package manager)
 ⚙️ Install Dependencies
 
 Run the following command in your terminal:
+
 pip install streamlit transformers pandas sqlalchemy langchain
 
 ▶️ Run the Application
 
 Start the Streamlit app by running:
+
 streamlit run app.py
 
 This will open the interactive dashboard in your default browser.
@@ -71,9 +82,11 @@ This will open the interactive dashboard in your default browser.
 🧠 System Workflow
 
 User Input:
+
 The user enters a natural language query or text for classification.
 
 Processing:
+
 The system uses an LLM to:
 
 Convert NL queries into SQL statements, or
@@ -101,9 +114,11 @@ Include API endpoints for programmatic access.
 💬 Feedback & Support
 
 For questions or feedback, contact:
+
 📧 sangichettypranav@gmail.com
 
 🏁 License
 
 This project is released under the MIT License.
+
 You are free to use, modify, and distribute it for research or educational purposes.
