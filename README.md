@@ -1,43 +1,39 @@
-🤖 AI-Powered Text Intelligence System using LLMs
+# 🤖 AI-Powered Text Intelligence System using LLMs
 
-An interactive Streamlit application that combines Natural Language to SQL (NL2SQL) with text classification. Ask questions about a SQLite database in plain English, inspect the generated SQL, view query results, and classify text with a pre-trained transformer model.
+An interactive **Streamlit** application combining Natural Language to SQL (NL2SQL) with text classification. Ask questions about a SQLite database in plain English, inspect the generated SQL, view query results, and classify text using a pre-trained transformer model.
 
-🚀 Live Demo
-🔗 Open the Streamlit App
+## 🚀 Live Demo
 
-Replace the placeholder above with the app's actual Streamlit Community Cloud URL. I could not verify a public deployment URL from the repository.
+👉 **[Launch the AI-Powered Text Intelligence System](https://ai-powered-text-intelligence-system-using-llms-4yzrmeyj2zrp2fg.streamlit.app/)**
 
-✨ Features
+## ✨ Features
 
-- Natural Language to SQL: Generates SQL from plain-English prompts using the defog/sqlcoder-7b-2 model.
+- **Natural Language to SQL:** Generates SQL from plain-English prompts using the `defog/sqlcoder-7b-2` model.
 
-- SQL execution and results: Attempts to execute generated SQL against a SQLite database and displays the results in the app.
+- **SQL execution and results:** Attempts to execute the generated query against a SQLite database and displays the results.
 
-- Text classification: Uses a pre-trained DistilBERT sentiment-classification model to return a label and confidence score.
+- **Text classification:** Uses a pre-trained DistilBERT sentiment-classification model to return a label and confidence score.
 
-- Interactive interface: Offers separate tabs for text classification and natural-language database queries.
+- **Interactive interface:** Offers separate tabs for text classification and natural-language database queries.
 
-- Modular Python code: Separates the Streamlit interface, SQL generation, text classification, preprocessing, and data/database logic.
+- **Modular Python code:** Separates the Streamlit interface, SQL generation, text classification, preprocessing, and data/database logic.
 
-Model note: The current text-classification model is fine-tuned for sentiment analysis. It should not be presented as a validated malicious-content, spam, or cybersecurity-risk detector without changing and evaluating the model. Review generated SQL before execution, particularly when using non-demo data.
+> **Model note:** The current text-classification model is fine-tuned for sentiment analysis. It should not be treated as a validated malicious-content, spam, or cybersecurity-risk detector without selecting and evaluating a model for those purposes. Generated SQL may be inaccurate; review it before execution, especially with non-demo data.
 
-🧰 Tech Stack
+## 🧰 Tech Stack
 
-Component	Technology
+| Component | Technology |
+|---|---|
+| User interface | Streamlit |
+| Programming language | Python |
+| Natural-language-to-SQL model | `defog/sqlcoder-7b-2` (Transformers) |
+| Text classification | `distilbert-base-uncased-finetuned-sst-2-english` |
+| Database | SQLite |
+| Data display | Pandas |
 
-Interface	Streamlit
+## 🗂️ Project Structure
 
-Language	Python
-
-Natural-language-to-SQL model	defog/sqlcoder-7b-2 (Transformers)
-
-Text classification	distilbert-base-uncased-finetuned-sst-2-english
-
-Database	SQLite
-
-Data display	Pandas
-
-🗂️ Project Structure
+```text
 .
 ├── app.py             # Streamlit interface
 ├── sql_generator.py   # Natural-language-to-SQL generation
@@ -45,78 +41,98 @@ Data display	Pandas
 ├── preprocess.py      # Text preprocessing
 ├── data.py            # Data utilities
 ├── database.db        # SQLite database
-├── requirement.txt    # Python dependencies
+├── requirement.txt    # Original dependency file
+├── requirements.txt   # Deployment dependency file
 └── README.md
+```
 
-⚙️ Run Locally
+## ⚙️ Run Locally
 
-1. Clone the repository
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Pranavsangichetty/AI-Powered-Text-Intelligence-System-using-LLMs.git
 cd AI-Powered-Text-Intelligence-System-using-LLMs
+```
 
-2. Create a virtual environment (recommended)
-Windows PowerShell
+### 2. Create and activate a virtual environment (recommended)
+
+**Windows PowerShell**
+
+```powershell
 python -m venv .venv
 .venv\Scripts\Activate.ps1
-macOS / Linux
+```
+
+**macOS / Linux**
+
+```bash
 python -m venv .venv
 source .venv/bin/activate
+```
 
-3. Install dependencies
-The repository's dependency file is named requirement.txt (singular):
-pip install -r requirement.txt
-Install compatible versions of PyTorch and Transformers for your operating system if needed.
+### 3. Install dependencies
 
-4. Run the app
-streamlit run app.py
-Streamlit will show a local URL in the terminal, usually http://localhost:8501.
+```bash
+python -m pip install -r requirements.txt
+```
 
-🧭 How It Works
+### 4. Start the application
 
-Text classification
+```bash
+python -m streamlit run app.py
+```
 
-1. Open the Text Classification tab.
+Streamlit will print a local address, usually `http://localhost:8501`.
 
-2. Enter text to analyze.
+## 🧭 How to Use
 
-3. Select Classify Text.
+### Text Classification
+
+1. Open the **Text Classification** tab.
+
+2. Enter the text you want to analyze.
+
+3. Select **Classify Text**.
 
 4. Review the predicted sentiment label and confidence score.
 
-Natural Language to SQL
+### Natural Language to SQL
 
-1. Open the Natural Language to SQL tab.
+1. Open the **Natural Language to SQL** tab.
 
 2. Enter a question in plain English.
 
-3. Select Generate SQL.
+3. Select **Generate SQL**.
 
-4. Review the generated SQL and the displayed query results.
+4. Review the generated SQL and displayed query results.
 
-Generated SQL may be inaccurate or incompatible with the database schema. Inspect it before use; this demo should not be used with sensitive or production data without additional safeguards.
+**Safety note:** Generated SQL can be incorrect or incompatible with the database schema. Inspect it before use. Do not use this demo with sensitive or production data without adding appropriate safeguards, including read-only query validation.
 
-🔭 Potential Improvements
+## 🔭 Potential Improvements
 
 - Validate generated SQL and restrict execution to read-only statements.
 
-- Load the language model once rather than reloading it for each request.
+- Load the language model once rather than reloading it for every request.
 
-- Add robust handling for model downloads, inference, and database errors.
+- Improve error handling for model downloads, inference, and database operations.
 
-- Evaluate the text classifier and choose a model aligned with the intended labels.
+- Evaluate the text classifier and use a model aligned with the intended labels.
 
-- Add tests and pin compatible dependency versions.
+- Add automated tests and pin compatible dependency versions.
 
-👤 Author
+## 👤 Author
 
-Pranav Sangichetty
+**Pranav Sangichetty**
 
-- Email: sangichettypranav@gmail.com
+- **Email:** [sangichettypranav@gmail.com](mailto:sangichettypranav@gmail.com)
 
-- LinkedIn: Pranav Sangichetty
+- **LinkedIn:** [Pranav Sangichetty](https://www.linkedin.com/in/pranav-sangichetty/)
 
-- GitHub: Pranavsangichetty
+- **GitHub:** [Pranavsangichetty](https://github.com/Pranavsangichetty)
 
-- Portfolio: pranav-lilac.vercel.app
+- **Portfolio:** [Visit portfolio](https://portfolio-pranav-lilac.vercel.app/)
 
-If you use or adapt this project, review the repository's license and the relevant model licenses before redistribution.
+---
+
+Please review the repository and relevant model licenses before redistributing or deploying modified versions.
