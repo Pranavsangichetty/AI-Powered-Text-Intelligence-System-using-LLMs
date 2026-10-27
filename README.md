@@ -1,124 +1,122 @@
 🤖 AI-Powered Text Intelligence System using LLMs
-📘 Project Overview
 
-This project presents a unified AI system that combines Natural Language to SQL (NL2SQL) generation and text classification using Large Language Models (LLMs).
-The system is designed to interpret natural language queries, generate corresponding SQL commands, and analyze or classify textual data for risk or malicious activity detection.
+An interactive Streamlit application that combines Natural Language to SQL (NL2SQL) with text classification. Ask questions about a SQLite database in plain English, inspect the generated SQL, view query results, and classify text with a pre-trained transformer model.
 
-It provides an interactive interface for seamless user interaction and a backend that executes queries and classifications efficiently, making it ideal for data analysts, cybersecurity researchers, and AI-driven business intelligence applications.
+🚀 Live Demo
+🔗 Open the Streamlit App
 
-🧩 Core Modules
-1. 🧠 Natural Language to SQL
+Replace the placeholder above with the app's actual Streamlit Community Cloud URL. I could not verify a public deployment URL from the repository.
 
-Converts user input in natural language (e.g., “Show me all users with high transaction value”) into valid SQL queries.
+✨ Features
 
-Executes queries on the connected database and displays results.
+- Natural Language to SQL: Generates SQL from plain-English prompts using the defog/sqlcoder-7b-2 model.
 
-2. 🔍 Text Classification
+- SQL execution and results: Attempts to execute generated SQL against a SQLite database and displays the results in the app.
 
-Classifies textual data (e.g., documents, messages, or logs) into predefined categories.
+- Text classification: Uses a pre-trained DistilBERT sentiment-classification model to return a label and confidence score.
 
-Detects potential malicious, spam, or risky content using transformer-based models.
+- Interactive interface: Offers separate tabs for text classification and natural-language database queries.
 
-3. 💻 Streamlit Interface
+- Modular Python code: Separates the Streamlit interface, SQL generation, text classification, preprocessing, and data/database logic.
 
-Simple and interactive web-based UI built using Streamlit.
+Model note: The current text-classification model is fine-tuned for sentiment analysis. It should not be presented as a validated malicious-content, spam, or cybersecurity-risk detector without changing and evaluating the model. Review generated SQL before execution, particularly when using non-demo data.
 
-Allows users to input queries, view SQL results, and analyze text classification outputs in real time.
+🧰 Tech Stack
 
-4. 🗄️ Database Integration
+Component	Technology
 
-Uses SQLite as a lightweight backend for executing SQL queries.
+Interface	Streamlit
 
-Can be extended to connect with MySQL, PostgreSQL, or other databases.
+Language	Python
 
-⚙️ Tech Stack
+Natural-language-to-SQL model	defog/sqlcoder-7b-2 (Transformers)
 
-Frontend: Streamlit
+Text classification	distilbert-base-uncased-finetuned-sst-2-english
 
-Backend: Python
+Database	SQLite
 
-LLM Model: Transformer-based models (e.g., Gemini, GPT, or similar LLMs)
+Data display	Pandas
 
-Database: SQLite
+🗂️ Project Structure
+.
+├── app.py             # Streamlit interface
+├── sql_generator.py   # Natural-language-to-SQL generation
+├── text_classifier.py # Text classification pipeline
+├── preprocess.py      # Text preprocessing
+├── data.py            # Data utilities
+├── database.db        # SQLite database
+├── requirement.txt    # Python dependencies
+└── README.md
 
-Libraries: Transformers, LangChain, SQLAlchemy, Pandas
+⚙️ Run Locally
 
-🚀 Features
+1. Clone the repository
+git clone https://github.com/Pranavsangichetty/AI-Powered-Text-Intelligence-System-using-LLMs.git
+cd AI-Powered-Text-Intelligence-System-using-LLMs
 
-✅ Converts natural language queries into SQL commands
+2. Create a virtual environment (recommended)
+Windows PowerShell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+macOS / Linux
+python -m venv .venv
+source .venv/bin/activate
 
-✅ Executes and displays query results directly in the interface
+3. Install dependencies
+The repository's dependency file is named requirement.txt (singular):
+pip install -r requirement.txt
+Install compatible versions of PyTorch and Transformers for your operating system if needed.
 
-✅ Detects and classifies malicious or risky text content
-
-✅ Interactive and user-friendly web UI
-
-✅ Modular structure for easy scalability and customization
-
-🛠️ Environment Setup
-
-🧩 Prerequisites
-
-Ensure you have:
-
-Python 3.8 or above
-
-pip (Python package manager)
-
-⚙️ Install Dependencies
-
-Run the following command in your terminal:
-
-pip install streamlit transformers pandas sqlalchemy langchain
-
-▶️ Run the Application
-
-Start the Streamlit app by running:
-
+4. Run the app
 streamlit run app.py
+Streamlit will show a local URL in the terminal, usually http://localhost:8501.
 
-This will open the interactive dashboard in your default browser.
+🧭 How It Works
 
-🧠 System Workflow
+Text classification
 
-User Input:
+1. Open the Text Classification tab.
 
-The user enters a natural language query or text for classification.
+2. Enter text to analyze.
 
-Processing:
+3. Select Classify Text.
 
-The system uses an LLM to:
+4. Review the predicted sentiment label and confidence score.
 
-Convert NL queries into SQL statements, or
+Natural Language to SQL
 
-Analyze text and classify its intent or threat level.
+1. Open the Natural Language to SQL tab.
 
-Execution & Output:
+2. Enter a question in plain English.
 
-SQL queries are executed on the database, and results are shown.
+3. Select Generate SQL.
 
-Text classification results are displayed with confidence scores.
+4. Review the generated SQL and the displayed query results.
 
-📈 Future Enhancements
+Generated SQL may be inaccurate or incompatible with the database schema. Inspect it before use; this demo should not be used with sensitive or production data without additional safeguards.
 
-Integrate advanced LLMs like GPT-4 or Gemini Pro for improved accuracy.
+🔭 Potential Improvements
 
-Add voice-based query support.
+- Validate generated SQL and restrict execution to read-only statements.
 
-Implement a multi-database selection feature.
+- Load the language model once rather than reloading it for each request.
 
-Deploy as a full-stack web app using Flask/Django + Streamlit.
+- Add robust handling for model downloads, inference, and database errors.
 
-Include API endpoints for programmatic access.
+- Evaluate the text classifier and choose a model aligned with the intended labels.
 
-💬 Feedback & Support
+- Add tests and pin compatible dependency versions.
 
-For questions or feedback, contact:
+👤 Author
 
-📧 sangichettypranav@gmail.com
+Pranav Sangichetty
 
-🏁 License
+- Email: sangichettypranav@gmail.com
 
-This project is released under the MIT License.
+- LinkedIn: Pranav Sangichetty
 
-You are free to use, modify, and distribute it for research or educational purposes.
+- GitHub: Pranavsangichetty
+
+- Portfolio: pranav-lilac.vercel.app
+
+If you use or adapt this project, review the repository's license and the relevant model licenses before redistribution.
